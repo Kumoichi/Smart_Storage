@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Smart_Storage</string>
+    <string name="add_item">Add Item</string>
+    <string name="all_food_list">My Food List</string>
+    <string name="fridge">Fridge</string>
+    <string name="freezer">Freezer</string>
+    <string name="pantry">Pantry</string>
+</resources>

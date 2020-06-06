@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="fridgeColor">#abb6ff</color>
+    <color name="fridgeButtonColor">#3b9aff</color>
+    <color name="freezerColor">#304bff</color>
+    <color name="freezerButtonColor">#001cd6</color>
+    <color name="pantryColor">#bf9573</color>
+    <color name="pantryButtonColor">#995808</color>
+    <color name="allAreasColor">#dcffd6</color>
+    <color name="addItemsButton">#1cbd00</color>
+</resources>
