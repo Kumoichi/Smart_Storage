@@ -5,4 +5,6 @@
     <string name="fridge">Fridge</string>
     <string name="freezer">Freezer</string>
     <string name="pantry">Pantry</string>
+    <string name="Line">__________________________________________________________________________</string>
+    <string name="add_food_item">Add Food Item</string>
 </resources>
