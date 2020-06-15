@@ -7,6 +7,51 @@
     android:background="@color/allAreasColor"
     tools:context=".add_food_activity">
 
+    <Button
+        android:id="@+id/pantry_Button2"
+        android:layout_width="114dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="28dp"
+        android:backgroundTint="@color/pantryButtonColor"
+        android:text="@string/pantry"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/freezer_Button2"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.481" />
+
+    <Button
+        android:id="@+id/fridge_Button2"
+        android:layout_width="123dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/fridgeButtonColor"
+        android:text="@string/fridge"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toEndOf="@+id/freezer_Button2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.482" />
+
+    <Button
+        android:id="@+id/freezer_Button2"
+        android:layout_width="122dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/freezerButtonColor"
+        android:text="@string/freezer"
+        android:textColor="#FFFFFF"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.482" />
+
     <TextView
         android:id="@+id/add_food_title"
         android:layout_width="217dp"
@@ -21,4 +66,61 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.007" />
+
+    <TextView
+        android:id="@+id/add_food_title2"
+        android:layout_width="262dp"
+        android:layout_height="41dp"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="@string/where_will_the_item_be_stored"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42" />
+
+    <EditText
+        android:id="@+id/enter_item"
+        android:layout_width="338dp"
+        android:layout_height="54dp"
+        android:autofillHints=""
+        android:gravity="center"
+        android:hint="@string/enter_item"
+        android:inputType="text"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_food_title"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_expiration_date"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/add_food_title2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_item" />
+
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="180dp"
+        android:layout_height="79dp"
+        android:text="@string/done"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.739" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
