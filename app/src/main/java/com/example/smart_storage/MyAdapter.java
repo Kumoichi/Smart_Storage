@@ -43,17 +43,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             if (storageType[position].equals("1")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            } else { holder.rootView.setLayoutParams(holder.params); }
+            } else { holder.detailLayout.setLayoutParams(holder.params); }
         } else if (MainActivity.active == 2) {
             if (storageType[position].equals("2")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            } else { holder.rootView.setLayoutParams(holder.params); }
+            } else { holder.detailLayout.setLayoutParams(holder.params); }
         } else if (MainActivity.active == 3) {
             if (storageType[position].equals("3")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            } else { holder.rootView.setLayoutParams(holder.params); }
+            } else { holder.detailLayout.setLayoutParams(holder.params); }
         }
 
         holder.rootView.setOnClickListener(new View.OnClickListener() {
@@ -74,15 +74,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public ConstraintLayout.LayoutParams params;
-        public ConstraintLayout rootView;
+        ConstraintLayout.LayoutParams params;
         TextView title, expiry;
         ConstraintLayout detailLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             params = new ConstraintLayout.LayoutParams(0, 0);
-            rootView = itemView.findViewById(R.id.rootView);
 
             title = itemView.findViewById(R.id.title);
             expiry = itemView.findViewById(R.id.expiry);

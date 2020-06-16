@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button pantryButton, freezerButton, fridgeButton, addFoodButton, calendarButton;
     RecyclerView recyclerView;
     View constraintLayout;
+    CardView cardView;
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
 
 
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         fridgeButton = findViewById(R.id.fridge_Button);
         addFoodButton = findViewById(R.id.add_item_button);
         calendarButton = findViewById(R.id.calendar_button);
+        cardView = findViewById(R.id.cardView);
 
         recyclerView = findViewById(R.id.myRecyclerView);
         for (int i=0; i<10;i++){
@@ -73,14 +76,14 @@ public class MainActivity extends AppCompatActivity {
 
         freezerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { //set back to all foods list
+            public void onClick(View v) {
                 freezer();
             }
         });
 
         fridgeButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { //set back to all foods list
+            public void onClick(View v) {
                 fridge();
             }
         });
@@ -126,12 +129,14 @@ public class MainActivity extends AppCompatActivity {
             active = 0;
             toggle = 1;
             constraintLayout.setBackgroundColor(Color.parseColor("#dcffd6"));
+            cardView.setCardBackgroundColor(Color.parseColor("#dcffd6"));
             pantryButton.setTypeface(null, Typeface.NORMAL);
             updateRecycler();
         } else { //set to pantry food list
             active = 1;
             toggle = 0;
             constraintLayout.setBackgroundColor(Color.parseColor("#bf9573"));
+            cardView.setCardBackgroundColor(Color.parseColor("#bf9573"));
             pantryButton.setTypeface(null, Typeface.BOLD_ITALIC);
             freezerButton.setTypeface(null, Typeface.NORMAL);
             fridgeButton.setTypeface(null, Typeface.NORMAL);
@@ -140,16 +145,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void freezer() {
-        if (active == 2 && toggle == 0) {
+        if (active == 2 && toggle == 0) { //set back to all foods list
             active = 0;
             toggle = 1;
             constraintLayout.setBackgroundColor(Color.parseColor("#dcffd6"));
+            cardView.setCardBackgroundColor(Color.parseColor("#dcffd6"));
             freezerButton.setTypeface(null, Typeface.NORMAL);
             updateRecycler();
         } else { //set to freezer food list
             active = 2;
             toggle = 0;
-            constraintLayout.setBackgroundColor(Color.parseColor("#304bff"));
+            constraintLayout.setBackgroundColor(Color.parseColor("#0077ff"));
+            cardView.setCardBackgroundColor(Color.parseColor("#0077ff"));
             freezerButton.setTypeface(null, Typeface.BOLD_ITALIC);
             pantryButton.setTypeface(null, Typeface.NORMAL);
             fridgeButton.setTypeface(null, Typeface.NORMAL);
@@ -158,16 +165,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void fridge() {
-        if (active == 3 && toggle == 0) {
+        if (active == 3 && toggle == 0) { //set back to all foods list
             active = 0;
             toggle = 1;
             constraintLayout.setBackgroundColor(Color.parseColor("#dcffd6"));
+            cardView.setCardBackgroundColor(Color.parseColor("#dcffd6"));
             fridgeButton.setTypeface(null, Typeface.NORMAL);
             updateRecycler();
         } else { //set to fridge food list
             active = 3;
             toggle = 0;
             constraintLayout.setBackgroundColor(Color.parseColor("#abb6ff"));
+            cardView.setCardBackgroundColor(Color.parseColor("#abb6ff"));
             fridgeButton.setTypeface(null, Typeface.BOLD_ITALIC);
             pantryButton.setTypeface(null, Typeface.NORMAL);
             freezerButton.setTypeface(null, Typeface.NORMAL);
