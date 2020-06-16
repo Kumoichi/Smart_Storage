@@ -14,9 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class add_food_activity extends AppCompatActivity {
 
-    Button pantryButton2, freezerButton2, fridgeButton2, doneButton;
+    Button pantryButton2, freezerButton2, fridgeButton2, doneButton, calendarButton;
     EditText itemName;
-    TextView date;
+    TextView theDate;
     int storageType = 0;
     View constraintLayout2;
 
@@ -30,7 +30,22 @@ public class add_food_activity extends AppCompatActivity {
         fridgeButton2 = findViewById(R.id.fridge_Button2);
         doneButton = findViewById(R.id.done_button);
         itemName = findViewById(R.id.enter_item);
-        date = findViewById(R.id.date);
+        theDate = findViewById(R.id.date);
+        calendarButton = findViewById(R.id.calendar_button);
+
+
+        Intent incomingIntent = getIntent();
+        String date = incomingIntent.getStringExtra("date");
+        theDate.setText(date);
+
+
+        calendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(add_food_activity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
 
         pantryButton2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +86,7 @@ public class add_food_activity extends AppCompatActivity {
                 String itemText = itemName.getText().toString().trim();
                 if (!itemText.isEmpty() && storageType != 0) { // *KENICHI* add this when you finish the calendar input:     && !date.getHint().toString().equals("Date")
                     MainActivity.setItem(itemName.getText());
-                    MainActivity.setDate(String.valueOf(date.getText()));
+                    MainActivity.setDate(String.valueOf(theDate.getText()));
                     MainActivity.setStorageType(String.valueOf(storageType));
                     openMainActivity();
                 }
@@ -96,6 +111,8 @@ public class add_food_activity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);

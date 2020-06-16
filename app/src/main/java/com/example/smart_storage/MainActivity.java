@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
@@ -25,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     static String[] storageType = {"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
     static int itemAmount = 0;
 
-    TextView theDate;
-    Button pantryButton, freezerButton, fridgeButton, addFoodButton, calendarButton;
+
+    Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     RecyclerView recyclerView;
     View constraintLayout;
     CardView cardView;
@@ -62,12 +63,8 @@ public class MainActivity extends AppCompatActivity {
             storageType[i] = "";
         }*/
 
-        theDate = findViewById(R.id.date);
-        calendarButton = findViewById(R.id.calendar_button);
 
-        Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
-        theDate.setText(date);
+
 
         loadArray("Item", this);
         loadArray("date", this);
@@ -102,13 +99,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        calendarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
