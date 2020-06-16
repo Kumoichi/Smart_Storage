@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +17,7 @@ public class add_food_activity extends AppCompatActivity {
     Button pantryButton2, freezerButton2, fridgeButton2, doneButton;
     EditText itemName;
     TextView date;
-    int storageType;
+    int storageType = 0;
     View constraintLayout2;
 
     @Override
@@ -67,10 +68,30 @@ public class add_food_activity extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.setItem(itemName.getText());
-                MainActivity.setDate(String.valueOf(date.getText()));
-                MainActivity.setStorageType(String.valueOf(storageType));
-                openMainActivity();
+                if (itemName != null && storageType != 0) { // *KENICHI* add this when you finish the calendar input:     && !date.getHint().toString().equals("Date")
+                    MainActivity.setItem(itemName.getText());
+                    MainActivity.setDate(String.valueOf(date.getText()));
+                    MainActivity.setStorageType(String.valueOf(storageType));
+                    openMainActivity();
+                }
+//                else if (itemName.getHint().toString().equals("Enter Item") && !date.getHint().toString().equals("Date") && storageType != 0) {
+//                    Toast.makeText(getApplicationContext(), "Please add a name for the item", Toast.LENGTH_LONG).show();
+//                } else if (itemName.getHint().toString().equals("Enter Item") && date.getHint().toString().equals("Date") && storageType != 0) {
+//                    Toast.makeText(getApplicationContext(), "Please add a name and date for the item", Toast.LENGTH_LONG).show();
+//                } else if (itemName.getHint().toString().equals("Enter Item") && date.getHint().toString().equals("Date") && storageType == 0) {
+//                    Toast.makeText(getApplicationContext(), "Please add a name, date and storage type for the item", Toast.LENGTH_LONG).show();
+//                } else if (!itemName.getHint().toString().equals("Enter Item") && !date.getHint().toString().equals("Date") && storageType == 0) {
+//                    Toast.makeText(getApplicationContext(), "Please add a storage type for the item", Toast.LENGTH_LONG).show();
+//                } else if (!itemName.getHint().toString().equals("Enter Item") && date.getHint().toString().equals("Date") && storageType == 0) {
+//                    Toast.makeText(getApplicationContext(), "Please add a date and storage type for the item", Toast.LENGTH_LONG).show();
+//                } else if (!itemName.getHint().toString().equals("Enter Item") && date.getHint().toString().equals("Date") && storageType != 0) {
+//                    Toast.makeText(getApplicationContext(), "Please add a date for the item", Toast.LENGTH_LONG).show();
+//                } else if (itemName.getHint().toString().equals("Enter Item") && !date.getHint().toString().equals("Date") && storageType == 0) {
+//                    Toast.makeText(getApplicationContext(), "Please add a name and storage type for the item", Toast.LENGTH_LONG).show();
+//                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Please enter the missing data", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
