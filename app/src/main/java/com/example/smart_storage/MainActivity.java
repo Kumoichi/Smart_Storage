@@ -48,13 +48,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        theDate = findViewById(R.id.date);
         constraintLayout = findViewById(R.id.constraint_Layout);
         pantryButton = findViewById(R.id.pantry_Button);
         freezerButton = findViewById(R.id.freezer_Button);
         fridgeButton = findViewById(R.id.fridge_Button);
         addFoodButton = findViewById(R.id.add_item_button);
-        calendarButton = findViewById(R.id.calendar_button);
         cardView = findViewById(R.id.cardView);
 
         recyclerView = findViewById(R.id.myRecyclerView);
@@ -63,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
             date[i] = "";
             storageType[i] = "";
         }
+
+        setContentView(R.layout.activity_add_food_activity);
+        theDate = findViewById(R.id.date);
+        calendarButton = findViewById(R.id.calendar_button);
 
         Intent incomingIntent = getIntent();
         String date = incomingIntent.getStringExtra("date");
