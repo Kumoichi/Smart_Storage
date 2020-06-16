@@ -21,14 +21,15 @@ public class MainActivity extends AppCompatActivity {
     static String[] item = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     static String[] date = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     static String[] storageType = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+
     static int itemAmount = 0;
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
     Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     RecyclerView recyclerView;
     View constraintLayout;
 
-    public static void setItem(Editable addItem) {
-        item[itemAmount] = String.valueOf(addItem);
+    public static void setItem(String addItem) {
+        item[itemAmount] = addItem;
     }
 
     public static void setDate(String addDate) {
@@ -132,14 +133,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        saveArray(item, "Item", this);
-        saveArray(date, "date", this);
-        saveArray(storageType, "storeType", this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
         saveArray(item, "Item", this);
         saveArray(date, "date", this);
         saveArray(storageType, "storeType", this);
