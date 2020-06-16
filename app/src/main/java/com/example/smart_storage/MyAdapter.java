@@ -11,13 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    String title[], expiration[];
+    String title[], expiration[], storageType[];
     Context context;
 
-    public MyAdapter(Context c, String s1[], String s2[]) {
+    public MyAdapter(Context c, String s1[], String s2[], String s3[]) {
         context = c;
         title = s1;
         expiration = s2;
+        storageType = s3;
     }
 
     @NonNull
