@@ -1,3 +1,5 @@
+package com.example.smart_storage;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -5,10 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.smart_storage.R;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
@@ -37,7 +36,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return title.length;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

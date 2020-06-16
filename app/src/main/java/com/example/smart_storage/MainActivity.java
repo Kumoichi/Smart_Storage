@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         fridgeButton = findViewById(R.id.fridge_Button);
         addFoodButton = findViewById(R.id.add_item_button);
 
+        recyclerView = findViewById(R.id.myRecyclerView);
         MyAdapter myAdapter = new MyAdapter(this, item, date);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
