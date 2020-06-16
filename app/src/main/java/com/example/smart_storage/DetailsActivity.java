@@ -19,6 +19,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         detailTitle = findViewById(R.id.detailTitle);
         detailExpiry = findViewById(R.id.detailExpiry);
+        detailStorage = findViewById(R.id.detailStorage);
 
         getData();
         setData();
@@ -26,9 +27,9 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void getData() {
         if (getIntent().hasExtra("title") && getIntent().hasExtra("expiration") && getIntent().hasExtra("storageType")) {
-            str1 =getIntent().getStringExtra("title");
-            str2 = getIntent().getStringExtra("expiration");
-            str3 = getIntent().getStringExtra("storageType");
+            str1 =getIntent().getStringExtra("detailTitle");
+            str2 = getIntent().getStringExtra("detailExpiration");
+            str3 = getIntent().getStringExtra("detailStorage");
         }
 
         else

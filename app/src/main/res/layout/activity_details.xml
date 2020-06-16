@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/detailguideline" />
 
     <TextView
         android:id="@+id/detailExpiry"
@@ -50,9 +50,18 @@
         app:layout_constraintTop_toBottomOf="@+id/detailExpiry" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/detailguideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2" />
+
+    <TextView
+        android:id="@+id/detailStorage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/detailExpiry"
+        app:layout_constraintTop_toBottomOf="@+id/detailTitle"
+        tools:layout_editor_absoluteX="175dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
