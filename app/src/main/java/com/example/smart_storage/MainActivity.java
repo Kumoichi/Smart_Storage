@@ -1,5 +1,7 @@
 package com.example.smart_storage;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button pantryButton, freezerButton, fridgeButton;
+    Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     View constraintLayout;
     int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         pantryButton = findViewById(R.id.pantry_Button);
         freezerButton = findViewById(R.id.freezer_Button);
         fridgeButton = findViewById(R.id.fridge_Button);
+        addFoodButton = findViewById(R.id.add_item_button);
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,5 +80,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        addFoodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddFoodActivity();
+            }
+        });
+    }
+
+    private void openAddFoodActivity() {
+        Intent intent = new Intent(this, add_food_activity.class);
+        startActivity(intent);
     }
 }
