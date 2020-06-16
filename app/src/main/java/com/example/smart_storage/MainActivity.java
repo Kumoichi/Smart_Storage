@@ -19,11 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
 
     static int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
-    static String[] item = {"Hey", "yo"};
-    //static String[] item = new String[10];
+    static String[] item = new String[10];
     static String[] date = new String[10];
-    static String[] storageType = {"2", "3"};
-    //static String[] storageType = new String[10]; //arrays for user inputted items/dates;
+    static String[] storageType = new String[10]; //arrays for user inputted items/dates;
     static int itemAmount = 2;
 
     TextView theDate;
@@ -61,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.myRecyclerView);
         for (int i = 0; i < 10; i++) {
-            //item[i]= "";
+            item[i]= "";
             date[i] = "";
-            //storageType[i] = "";
+            storageType[i] = "";
         }
 
         Intent incomingIntent = getIntent();
         String date = incomingIntent.getStringExtra("date");
-        //theDate.setText(date);
+        theDate.setText(date);
 
         loadArray("Item", this);
         loadArray("date", this);
@@ -103,17 +101,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//        calendarButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
+        calendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-
 
     @Override
     protected void onPostResume() {
