@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     static String[] date = {"test1,", "test2,", "test3,", "test4,", "test5"};
     static String[] storageType = {"1", "3", "2", "2", "1"}; //arrays for user inputted items/dates;
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
-    static int itemAmount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,5 +132,22 @@ public class MainActivity extends AppCompatActivity {
     public static void setStorageType(String addStorageType) {
         storageType[itemAmount] = addStorageType;
         itemAmount++;
+    }
+
+    public boolean saveArray(String[] array, String Name, Context mContext) {
+        SharedPreferences prefs = mContext.getSharedPreferences("prefrencename", 0);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(Name +"_size", array.length);
+        for(int i=0;i<array.length;i++)
+            editor.putString(Name + " " + i, array[i]);
+        return editor.commit();
+    }
+    public String[] loadArray(String arrayName, Context mContext) {
+        SharedPreferences prefs = mContext.getSharedPreferences("prefrencename", 0);
+        int size = prefs.getInt(arrayName + "_size", 0);
+        String[] array = new String[size];
+        for(int i=0;i<size;i++)
+            array[i] = prefs.getString(arrayName + " " + i, null);
+        return array;
     }
 }
