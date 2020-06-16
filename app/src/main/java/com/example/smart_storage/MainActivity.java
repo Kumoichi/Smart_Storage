@@ -1,5 +1,7 @@
 package com.example.smart_storage;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -11,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button pantryButton, freezerButton, fridgeButton;
+    Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     RecyclerView recyclerView;
     View constraintLayout;
     String item, date; //arrays for user inputted items/dates;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         pantryButton = findViewById(R.id.pantry_Button);
         freezerButton = findViewById(R.id.freezer_Button);
         fridgeButton = findViewById(R.id.fridge_Button);
+        addFoodButton = findViewById(R.id.add_item_button);
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,5 +83,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        addFoodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddFoodActivity();
+            }
+        });
+    }
+
+    private void openAddFoodActivity() {
+        Intent intent = new Intent(this, add_food_activity.class);
+        startActivity(intent);
     }
 }
