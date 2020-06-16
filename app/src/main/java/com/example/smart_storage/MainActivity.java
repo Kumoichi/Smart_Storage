@@ -1,6 +1,8 @@
 package com.example.smart_storage;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -17,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
     Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     RecyclerView recyclerView;
     View constraintLayout;
-    String[] item = {"test1,", "test2,", "test3,", "test4,", "test5"};
-    String[] date = {"test1,", "test2,", "test3,", "test4,", "test5"};
-    String[] storageType = {"1", "3", "2", "2", "1"}; //arrays for user inputted items/dates;
+    String[] item = new String[200];
+    String[] date = new String[200];
+    String[] storageType = new String[200]; //arrays for user inputted items/dates;
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
 
     @Override
@@ -119,5 +121,21 @@ public class MainActivity extends AppCompatActivity {
 
     public int getActive() {
         return active;
+    }
+    public boolean saveArray(String[] array, String Name, Context mContext) {
+        SharedPreferences prefs = mContext.getSharedPreferences("prefrencename", 0);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(Name +"_size", array.length);
+        for(int i=0;i<array.length;i++)
+            editor.putString(Name + " " + i, array[i]);
+        return editor.commit();
+    }
+    public String[] loadArray(String arrayName, Context mContext) {
+        SharedPreferences prefs = mContext.getSharedPreferences("prefrencename", 0);
+        int size = prefs.getInt(arrayName + "_size", 0);
+        String[] array = new String[size];
+        for(int i=0;i<size;i++)
+            array[i] = prefs.getString(arrayName + " " + i, null);
+        return array;
     }
 }
