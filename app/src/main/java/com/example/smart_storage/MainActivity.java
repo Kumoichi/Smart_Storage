@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     RecyclerView recyclerView;
     View constraintLayout;
-    String item, date; //arrays for user inputted items/dates;
+    String item[] = {"test1,", "test2,", "test3,", "test4,", "test5"}
+         , date[] = {"test1,", "test2,", "test3,", "test4,", "test5"}; //arrays for user inputted items/dates;
     int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
 
@@ -29,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         freezerButton = findViewById(R.id.freezer_Button);
         fridgeButton = findViewById(R.id.fridge_Button);
         addFoodButton = findViewById(R.id.add_item_button);
+
+        MyAdapter myAdapter = new MyAdapter(this, item, date);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
             @Override
