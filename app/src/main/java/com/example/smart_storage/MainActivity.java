@@ -18,12 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
-
     static int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
-    static String[] item = new String[10];
+    static String[] item = {"Hey", "yo"};
+    //static String[] item = new String[10];
     static String[] date = new String[10];
-    static String[] storageType = new String[10]; //arrays for user inputted items/dates;
-    static int itemAmount = 0;
+    static String[] storageType = {"2", "3"};
+    //static String[] storageType = new String[10]; //arrays for user inputted items/dates;
+    static int itemAmount = 2;
 
     TextView theDate;
     Button pantryButton, freezerButton, fridgeButton, addFoodButton, calendarButton;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     View constraintLayout;
     CardView cardView;
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
-
 
     public static void setItem(Editable addItem) {
         item[itemAmount] = String.valueOf(addItem);
@@ -60,17 +60,19 @@ public class MainActivity extends AppCompatActivity {
         cardView = findViewById(R.id.cardView);
 
         recyclerView = findViewById(R.id.myRecyclerView);
-        for (int i=0; i<10;i++){
-            item[i]= "";
+        for (int i = 0; i < 10; i++) {
+            //item[i]= "";
             date[i] = "";
-            storageType[i] = "";
+            //storageType[i] = "";
         }
-        
+
         Intent incomingIntent = getIntent();
         String date = incomingIntent.getStringExtra("date");
-        theDate.setText(date);
+        //theDate.setText(date);
 
-
+        loadArray("Item", this);
+        loadArray("date", this);
+        loadArray("storageType", this);
         updateRecycler();
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
@@ -94,30 +96,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         addFoodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openAddFoodActivity();
             }
         });
-        loadArray( "Item",this);
-        loadArray( "date", this);
-        loadArray("storageType",this);
 
 
-        calendarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
-                startActivity(intent);
-            }
-        });
+//        calendarButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
-
-
 
 
     @Override
@@ -134,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        saveArray(item, "Item",this);
+        saveArray(item, "Item", this);
         saveArray(date, "date", this);
         saveArray(storageType, "storeType", this);
     }
@@ -144,14 +139,12 @@ public class MainActivity extends AppCompatActivity {
             active = 0;
             toggle = 1;
             constraintLayout.setBackgroundColor(Color.parseColor("#dcffd6"));
-            cardView.setCardBackgroundColor(Color.parseColor("#dcffd6"));
             pantryButton.setTypeface(null, Typeface.NORMAL);
             updateRecycler();
         } else { //set to pantry food list
             active = 1;
             toggle = 0;
             constraintLayout.setBackgroundColor(Color.parseColor("#bf9573"));
-            cardView.setCardBackgroundColor(Color.parseColor("#bf9573"));
             pantryButton.setTypeface(null, Typeface.BOLD_ITALIC);
             freezerButton.setTypeface(null, Typeface.NORMAL);
             fridgeButton.setTypeface(null, Typeface.NORMAL);
@@ -164,14 +157,12 @@ public class MainActivity extends AppCompatActivity {
             active = 0;
             toggle = 1;
             constraintLayout.setBackgroundColor(Color.parseColor("#dcffd6"));
-            cardView.setCardBackgroundColor(Color.parseColor("#dcffd6"));
             freezerButton.setTypeface(null, Typeface.NORMAL);
             updateRecycler();
         } else { //set to freezer food list
             active = 2;
             toggle = 0;
             constraintLayout.setBackgroundColor(Color.parseColor("#0077ff"));
-            cardView.setCardBackgroundColor(Color.parseColor("#0077ff"));
             freezerButton.setTypeface(null, Typeface.BOLD_ITALIC);
             pantryButton.setTypeface(null, Typeface.NORMAL);
             fridgeButton.setTypeface(null, Typeface.NORMAL);
@@ -184,14 +175,12 @@ public class MainActivity extends AppCompatActivity {
             active = 0;
             toggle = 1;
             constraintLayout.setBackgroundColor(Color.parseColor("#dcffd6"));
-            cardView.setCardBackgroundColor(Color.parseColor("#dcffd6"));
             fridgeButton.setTypeface(null, Typeface.NORMAL);
             updateRecycler();
         } else { //set to fridge food list
             active = 3;
             toggle = 0;
             constraintLayout.setBackgroundColor(Color.parseColor("#abb6ff"));
-            cardView.setCardBackgroundColor(Color.parseColor("#abb6ff"));
             fridgeButton.setTypeface(null, Typeface.BOLD_ITALIC);
             pantryButton.setTypeface(null, Typeface.NORMAL);
             freezerButton.setTypeface(null, Typeface.NORMAL);

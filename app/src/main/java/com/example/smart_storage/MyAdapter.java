@@ -56,7 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             } else { holder.detailLayout.setLayoutParams(holder.params); }
         }
 
-        holder.rootView.setOnClickListener(new View.OnClickListener() {
+        holder.detailLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailsActivity.class);
