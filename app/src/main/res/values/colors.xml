@@ -11,4 +11,5 @@
     <color name="pantryButtonColor">#995808</color>
     <color name="allAreasColor">#dcffd6</color>
     <color name="addItemsButton">#1cbd00</color>
+    <color name="enterDateColor">#58db68</color>
 </resources>
