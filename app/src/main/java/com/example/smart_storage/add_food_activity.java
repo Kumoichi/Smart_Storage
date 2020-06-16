@@ -68,7 +68,8 @@ public class add_food_activity extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (itemName != null && storageType != 0) { // *KENICHI* add this when you finish the calendar input:     && !date.getHint().toString().equals("Date")
+                String itemText = itemName.getText().toString().trim();
+                if (!itemText.isEmpty() && storageType != 0) { // *KENICHI* add this when you finish the calendar input:     && !date.getHint().toString().equals("Date")
                     MainActivity.setItem(itemName.getText());
                     MainActivity.setDate(String.valueOf(date.getText()));
                     MainActivity.setStorageType(String.valueOf(storageType));
