@@ -4,9 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -40,17 +42,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             if (storageType[position].equals("1")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            }
+            } else { holder.rootView.setLayoutParams(holder.params); }
         } else if (MainActivity.active == 2) {
             if (storageType[position].equals("2")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            }
+            } else { holder.rootView.setLayoutParams(holder.params); }
         } else if (MainActivity.active == 3) {
             if (storageType[position].equals("3")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            }
+            } else { holder.rootView.setLayoutParams(holder.params); }
         }
     }
 
@@ -60,12 +62,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
+        public ConstraintLayout.LayoutParams params;
+        public ConstraintLayout rootView;
         TextView title, expiry;
         //ConstraintLayout mainlayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            params = new ConstraintLayout.LayoutParams(0, 0);
+            rootView = itemView.findViewById(R.id.rootView);
+
             title = itemView.findViewById(R.id.title);
             expiry = itemView.findViewById(R.id.expiry);
             //mainlayout =itemView.findViewById(R.id.mainlayout);
