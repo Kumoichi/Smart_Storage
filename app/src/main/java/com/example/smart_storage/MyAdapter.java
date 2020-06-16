@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    String title[], expiration[], storageType[];
+    String[] title;
+    String[] expiration;
+    String[] storageType;
     Context context;
 
-    public MyAdapter(Context c, String s1[], String s2[], String s3[]) {
+    public MyAdapter(Context c, String[] s1, String[] s2, String[] s3) {
         context = c;
         title = s1;
         expiration = s2;
@@ -25,14 +27,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view =inflater.inflate(R.layout.my_row, parent, false);
+        View view = inflater.inflate(R.layout.my_row, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.title.setText(title[position]);
-        holder.expiry.setText(expiration[position]);
+        if (MainActivity.active == 0) {
+            holder.title.setText(title[position]);
+            holder.expiry.setText(expiration[position]);
+        } else if (MainActivity.active == 1) {
+            if (storageType[position].equals("1")) {
+                holder.title.setText(title[position]);
+                holder.expiry.setText(expiration[position]);
+            }
+        } else if (MainActivity.active == 2) {
+            if (storageType[position].equals("2")) {
+                holder.title.setText(title[position]);
+                holder.expiry.setText(expiration[position]);
+            }
+        } else if (MainActivity.active == 3) {
+            if (storageType[position].equals("3")) {
+                holder.title.setText(title[position]);
+                holder.expiry.setText(expiration[position]);
+            }
+        }
     }
 
     @Override
@@ -47,7 +66,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            title =itemView.findViewById(R.id.title);
+            title = itemView.findViewById(R.id.title);
             expiry = itemView.findViewById(R.id.expiry);
             //mainlayout =itemView.findViewById(R.id.mainlayout);
         }
