@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
@@ -26,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
     static String[] storageType = {"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
     static int itemAmount = 0;
 
-
-    Button pantryButton, freezerButton, fridgeButton, addFoodButton;
+    TextView theDate;
+    Button pantryButton, freezerButton, fridgeButton, addFoodButton, calendarButton;
     RecyclerView recyclerView;
     View constraintLayout;
     CardView cardView;
@@ -63,12 +62,16 @@ public class MainActivity extends AppCompatActivity {
             storageType[i] = "";
         }*/
 
+        theDate = findViewById(R.id.date);
+        calendarButton = findViewById(R.id.calendar_button);
 
+        //Intent incomingIntent = getIntent();
+        //String date = incomingIntent.getStringExtra("date");
+        //theDate.setText(date);
 
-
-        loadArray("Item", this);
-        loadArray("date", this);
-        loadArray("storageType", this);
+        item = loadArray("Item", this);
+        date =loadArray("date", this);
+        storageType = loadArray("storageType", this);
         updateRecycler();
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +102,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*calendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });*/
     }
 
     @Override
@@ -135,6 +145,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
+        saveArray(item, "Item", this);
+        saveArray(date, "date", this);
+        saveArray(storageType, "storeType", this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         saveArray(item, "Item", this);
         saveArray(date, "date", this);
         saveArray(storageType, "storeType", this);
