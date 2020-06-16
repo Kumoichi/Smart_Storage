@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,14 +18,17 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
 
     static int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
-    static String[] item = {"test1,", "test2,", "test3,", "test4,", "test5"};
-    static String[] date = {"test1,", "test2,", "test3,", "test4,", "test5"};
-    static String[] storageType = {"1", "3", "2", "2", "1"}; //arrays for user inputted items/dates;
+    static String[] item = new String[10];
+    static String[] date = new String[10];
+    static String[] storageType = new String[10]; //arrays for user inputted items/dates;
     static int itemAmount = 0;
-    Button pantryButton, freezerButton, fridgeButton, addFoodButton;
+
+    TextView theDate;
+    Button pantryButton, freezerButton, fridgeButton, addFoodButton, calendarButton;
     RecyclerView recyclerView;
     View constraintLayout;
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
+
 
     public static void setItem(Editable addItem) {
         item[itemAmount] = String.valueOf(addItem);
@@ -43,13 +47,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        theDate = findViewById(R.id.date);
         constraintLayout = findViewById(R.id.constraint_Layout);
         pantryButton = findViewById(R.id.pantry_Button);
         freezerButton = findViewById(R.id.freezer_Button);
         fridgeButton = findViewById(R.id.fridge_Button);
         addFoodButton = findViewById(R.id.add_item_button);
+        calendarButton = findViewById(R.id.calendar_button);
 
         recyclerView = findViewById(R.id.myRecyclerView);
+        for (int i=0; i<10;i++){
+            item[i]= "";
+            date[i] = "";
+            storageType[i] = "";
+        }
+
         updateRecycler();
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
@@ -73,13 +85,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         addFoodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openAddFoodActivity();
             }
         });
+        loadArray( "Item",this);
+        loadArray( "date", this);
+        loadArray("storageType",this);
     }
+
+
+
+
 
     @Override
     protected void onPostResume() {
@@ -89,6 +110,15 @@ public class MainActivity extends AppCompatActivity {
             else if (active == 2) freezer();
             else if (active == 3) fridge();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        saveArray(item, "Item",this);
+        saveArray(date, "date", this);
+        saveArray(storageType, "storeType", this);
     }
 
     public void pantry() {
