@@ -25,7 +25,7 @@ public class CalendarActivity extends AppCompatActivity {
                 String dates = year + "/" + month + "/" + dayOfMonth;
 
 
-                Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
+                Intent intent = new Intent(CalendarActivity.this, add_food_activity.class);
                 intent.putExtra("date", dates);
                 startActivity(intent);
             }

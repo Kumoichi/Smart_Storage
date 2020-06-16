@@ -20,6 +20,7 @@ public class add_food_activity extends AppCompatActivity {
     int storageType = 0;
     View constraintLayout2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,8 +112,6 @@ public class add_food_activity extends AppCompatActivity {
             }
         });
     }
-
-
 
     private void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
