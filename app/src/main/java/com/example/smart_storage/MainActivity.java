@@ -19,9 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
 
     static int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
-    static String[] item = new String[10];
-    static String[] date = new String[10];
-    static String[] storageType = new String[10]; //arrays for user inputted items/dates;
+    static String[] item = {"test 1","","","","","","","",""};
+    static String[] date = {"","","","","","","","",""};
+    static String[] storageType = {"","","","","","","","",""}; //arrays for user inputted items/dates;
     static int itemAmount = 0;
 
     TextView theDate;
@@ -56,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
         cardView = findViewById(R.id.cardView);
 
         recyclerView = findViewById(R.id.myRecyclerView);
-        for (int i = 0; i < 10; i++) {
+        /*for (int i = 0; i < 10; i++) {
             item[i]= "";
             date[i] = "";
             storageType[i] = "";
-        }
+        }*/
 
         theDate = findViewById(R.id.date);
         calendarButton = findViewById(R.id.calendar_button);
@@ -123,23 +123,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    private void sortItems() {
-//        for (int i = 0; i < itemAmount - 1; i++) {
-////            if (date[i+1] < date[i]) {
-////                String temp = date[i];
-////                date[i] = date[i+1];
-////                date[i+1] = temp;
-////
-////                temp = item[i];
-////                item[i] = item[i+1];
-////                item[i+1] = temp;
-////
-////                temp = storageType[i];
-////                storageType[i] = storageType[i+1];
-////                storageType[i+1] = temp;
-////            }
-//        }
-//    }
+/*    private void sortItems() {
+        for (int i = 0; i < itemAmount - 1; i++) {
+            if (date[i+1] < date[i]) {
+                String temp = date[i];
+                date[i] = date[i+1];
+                date[i+1] = temp;
+
+                temp = item[i];
+                item[i] = item[i+1];
+                item[i+1] = temp;
+
+                temp = storageType[i];
+                storageType[i] = storageType[i+1];
+                storageType[i+1] = temp;
+            }
+       }
+    }*/
 
     @Override
     protected void onPause() {
