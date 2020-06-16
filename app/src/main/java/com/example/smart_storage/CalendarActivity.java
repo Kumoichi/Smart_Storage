@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CalendarActivity extends AppCompatActivity {
 
-    private static final String TAG = "CalendarActivity";
     CalendarView mCalendarView;
 
     @Override
@@ -24,7 +23,7 @@ public class CalendarActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String dates = year + "/" + month + "/" + dayOfMonth;
-                Log.d(TAG, "onSelectedDayChanges: date " + dates);
+
 
                 Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
                 intent.putExtra("date", dates);
