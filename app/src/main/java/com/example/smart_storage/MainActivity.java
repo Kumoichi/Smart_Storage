@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,10 +18,11 @@ public class MainActivity extends AppCompatActivity {
     Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     RecyclerView recyclerView;
     View constraintLayout;
-    String[] item = {"test1,", "test2,", "test3,", "test4,", "test5"};
-    String[] date = {"test1,", "test2,", "test3,", "test4,", "test5"};
-    String[] storageType = {"1", "3", "2", "2", "1"}; //arrays for user inputted items/dates;
+    static String[] item = {"test1,", "test2,", "test3,", "test4,", "test5"};
+    static String[] date = {"test1,", "test2,", "test3,", "test4,", "test5"};
+    static String[] storageType = {"1", "3", "2", "2", "1"}; //arrays for user inputted items/dates;
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
+    static int itemAmount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,5 +121,18 @@ public class MainActivity extends AppCompatActivity {
 
     public int getActive() {
         return active;
+    }
+
+    public static void setItem(Editable addItem) {
+        item[itemAmount] = String.valueOf(addItem);
+    }
+
+    public static void setDate(String addDate) {
+        date[itemAmount] = addDate;
+    }
+
+    public static void setStorageType(String addStorageType) {
+        storageType[itemAmount] = addStorageType;
+        itemAmount++;
     }
 }
