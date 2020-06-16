@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
+
     static int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
     static String[] item = new String[10];
     static String[] date = new String[10];
@@ -61,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
             date[i] = "";
             storageType[i] = "";
         }
+        
+        Intent incomingIntent = getIntent();
+        String date = incomingIntent.getStringExtra("date");
+        theDate.setText(date);
+
 
         updateRecycler();
 
@@ -96,8 +102,17 @@ public class MainActivity extends AppCompatActivity {
         loadArray( "Item",this);
         loadArray( "date", this);
         loadArray("storageType",this);
-    }
 
+
+        calendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
 
 
 
