@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
         //String date = incomingIntent.getStringExtra("date");
         //theDate.setText(date);
 
-        item = loadArray("Item", this);
-        date = loadArray("date", this);
-        storageType = loadArray("storageType", this);
+//        item = loadArray("Item", this);
+//        date = loadArray("date", this);
+//        storageType = loadArray("storageType", this);
         updateRecycler();
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
