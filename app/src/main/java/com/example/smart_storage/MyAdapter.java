@@ -43,20 +43,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             if (storageType[position].equals("1")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            } else { holder.detailLayout.setLayoutParams(holder.params); }
+            } else { holder.rootView.setLayoutParams(holder.params); }
         } else if (MainActivity.active == 2) {
             if (storageType[position].equals("2")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            } else { holder.detailLayout.setLayoutParams(holder.params); }
+            } else { holder.rootView.setLayoutParams(holder.params); }
         } else if (MainActivity.active == 3) {
             if (storageType[position].equals("3")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            } else { holder.detailLayout.setLayoutParams(holder.params); }
+            } else { holder.rootView.setLayoutParams(holder.params); }
         }
 
-        holder.detailLayout.setOnClickListener(new View.OnClickListener() {
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailsActivity.class);
@@ -76,7 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout.LayoutParams params;
         TextView title, expiry;
-        ConstraintLayout detailLayout;
+        ConstraintLayout rootView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,7 +84,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
             title = itemView.findViewById(R.id.title);
             expiry = itemView.findViewById(R.id.expiry);
-            detailLayout =itemView.findViewById(R.id.rootView);
+            rootView = itemView.findViewById(R.id.rootView);
         }
     }
 }

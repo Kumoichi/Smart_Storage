@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             storageType[i] = "";
         }
 
-        setContentView(R.layout.activity_add_food_activity);
         theDate = findViewById(R.id.date);
         calendarButton = findViewById(R.id.calendar_button);
 
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        sortItems();
+        //sortItems();
 
         if (itemAmount != 0) {
             if (active == 1) pantry();
@@ -124,23 +123,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void sortItems() {
-        for (int i = 0; i < itemAmount - 1; i++) {
-            if (date[i+1] < date[i]) {
-                String temp = date[i];
-                date[i] = date[i+1];
-                date[i+1] = temp;
-
-                temp = item[i];
-                item[i] = item[i+1];
-                item[i+1] = temp;
-
-                temp = storageType[i];
-                storageType[i] = storageType[i+1];
-                storageType[i+1] = temp;
-            }
-        }
-    }
+//    private void sortItems() {
+//        for (int i = 0; i < itemAmount - 1; i++) {
+////            if (date[i+1] < date[i]) {
+////                String temp = date[i];
+////                date[i] = date[i+1];
+////                date[i+1] = temp;
+////
+////                temp = item[i];
+////                item[i] = item[i+1];
+////                item[i+1] = temp;
+////
+////                temp = storageType[i];
+////                storageType[i] = storageType[i+1];
+////                storageType[i+1] = temp;
+////            }
+//        }
+//    }
 
     @Override
     protected void onPause() {
@@ -213,11 +212,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void openAddFoodActivity() {
         Intent intent = new Intent(this, add_food_activity.class);
+        //intent.putExtra();
         startActivity(intent);
-    }
-
-    public int getActive() {
-        return active;
     }
 
     public boolean saveArray(String[] array, String Name, Context mContext) {
