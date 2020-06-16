@@ -1,6 +1,7 @@
 package com.example.smart_storage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         if (MainActivity.active == 0) {
             holder.title.setText(title[position]);
             holder.expiry.setText(expiration[position]);
@@ -54,6 +55,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 holder.expiry.setText(expiration[position]);
             } else { holder.rootView.setLayoutParams(holder.params); }
         }
+
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("detailTitle", title[position]);
+                intent.putExtra("detailExpiry", expiration[position]);
+                intent.putExtra("detailStorage", storageType[position]);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -65,7 +77,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public ConstraintLayout.LayoutParams params;
         public ConstraintLayout rootView;
         TextView title, expiry;
-        //ConstraintLayout mainlayout;
+        ConstraintLayout detailLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,7 +86,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
             title = itemView.findViewById(R.id.title);
             expiry = itemView.findViewById(R.id.expiry);
-            //mainlayout =itemView.findViewById(R.id.mainlayout);
+            detailLayout =itemView.findViewById(R.id.rootView);
         }
     }
 }
