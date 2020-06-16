@@ -128,11 +128,9 @@ public class MainActivity extends AppCompatActivity {
                 String temp = date[i];
                 date[i] = date[i+1];
                 date[i+1] = temp;
-
                 temp = item[i];
                 item[i] = item[i+1];
                 item[i+1] = temp;
-
                 temp = storageType[i];
                 storageType[i] = storageType[i+1];
                 storageType[i+1] = temp;
