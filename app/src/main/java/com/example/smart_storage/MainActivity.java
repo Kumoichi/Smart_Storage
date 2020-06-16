@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
         theDate = findViewById(R.id.date);
         calendarButton = findViewById(R.id.calendar_button);
 
-        Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
-        theDate.setText(date);
+        //Intent incomingIntent = getIntent();
+        //String date = incomingIntent.getStringExtra("date");
+        //theDate.setText(date);
 
-        loadArray("Item", this);
-        loadArray("date", this);
-        loadArray("storageType", this);
+        item = loadArray("Item", this);
+        date =loadArray("date", this);
+        storageType = loadArray("storageType", this);
         updateRecycler();
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
@@ -102,13 +102,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        calendarButton.setOnClickListener(new View.OnClickListener() {
+        /*calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
@@ -145,6 +145,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
+        saveArray(item, "Item", this);
+        saveArray(date, "date", this);
+        saveArray(storageType, "storeType", this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         saveArray(item, "Item", this);
         saveArray(date, "date", this);
         saveArray(storageType, "storeType", this);
