@@ -9,10 +9,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,18 +18,14 @@ public class MainActivity extends AppCompatActivity {
 
     static int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
     //arrays for user inputted items/dates, BIG NOOB, but it works xd
-    static String[] item = {"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
-    static String[] date = {"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
-    static String[] storageType = {"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
+    static String[] item = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    static String[] date = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    static String[] storageType = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     static int itemAmount = 0;
-
-
+    int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
     Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     RecyclerView recyclerView;
     View constraintLayout;
-    CardView cardView;
-
-    int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
 
     public static void setItem(Editable addItem) {
         item[itemAmount] = String.valueOf(addItem);
@@ -55,13 +49,7 @@ public class MainActivity extends AppCompatActivity {
         freezerButton = findViewById(R.id.freezer_Button);
         fridgeButton = findViewById(R.id.fridge_Button);
         addFoodButton = findViewById(R.id.add_item_button);
-        cardView = findViewById(R.id.cardView);
         recyclerView = findViewById(R.id.myRecyclerView);
-        /*for (int i = 0; i < 10; i++) {
-            item[i]= "";
-            date[i] = "";
-            storageType[i] = "";
-        }*/
 
 
         //Intent incomingIntent = getIntent();
@@ -69,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         //theDate.setText(date);
 
         item = loadArray("Item", this);
-        date =loadArray("date", this);
+        date = loadArray("date", this);
         storageType = loadArray("storageType", this);
         updateRecycler();
 
@@ -224,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = mContext.getSharedPreferences("prefrencename", 0);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(Name + "_size", array.length);
+        editor.putInt("itemCount", itemAmount);
         for (int i = 0; i < array.length; i++)
             editor.putString(Name + " " + i, array[i]);
         return editor.commit();
@@ -233,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = mContext.getSharedPreferences("prefrencename", 0);
         int size = prefs.getInt(arrayName + "_size", 0);
         String[] array = new String[size];
+        itemAmount = prefs.getInt("itemCount", 0);
         for (int i = 0; i < size; i++)
             array[i] = prefs.getString(arrayName + " " + i, null);
         return array;
