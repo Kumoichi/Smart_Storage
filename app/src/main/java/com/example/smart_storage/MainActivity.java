@@ -19,9 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
 
     static int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
-    static String[] item = new String[10];
-    static String[] date = new String[10];
-    static String[] storageType = new String[10]; //arrays for user inputted items/dates;
+    //arrays for user inputted items/dates, BIG NOOB, but it works xd
+    static String[] item = {"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
+    static String[] date = {"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
+    static String[] storageType = {"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
     static int itemAmount = 0;
 
     TextView theDate;
@@ -54,24 +55,24 @@ public class MainActivity extends AppCompatActivity {
         fridgeButton = findViewById(R.id.fridge_Button);
         addFoodButton = findViewById(R.id.add_item_button);
         cardView = findViewById(R.id.cardView);
-
         recyclerView = findViewById(R.id.myRecyclerView);
-        for (int i = 0; i < 10; i++) {
-            item[i]= "";
-            date[i] = "";
-            storageType[i] = "";
-        }
 
         theDate = findViewById(R.id.date);
         calendarButton = findViewById(R.id.calendar_button);
 
-        Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
-        theDate.setText(date);
+//        Intent incomingIntent = getIntent();
+//        String date = incomingIntent.getStringExtra("date");
+//        theDate.setText(date);
 
         loadArray("Item", this);
         loadArray("date", this);
         loadArray("storageType", this);
+        
+//        for (int i = 0; i < 10; i++) {
+//            item[i] = "";
+//            date[i] = "";
+//            storageType[i] = "";
+//        }
         updateRecycler();
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
@@ -102,13 +103,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        calendarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
-                startActivity(intent);
-            }
-        });
+//        calendarButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Override
@@ -212,7 +213,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void openAddFoodActivity() {
         Intent intent = new Intent(this, add_food_activity.class);
-        //intent.putExtra();
         startActivity(intent);
     }
 
