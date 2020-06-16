@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     static String[] item = new String[10];
     static String[] date = new String[10];
     static String[] storageType = new String[10]; //arrays for user inputted items/dates;
-    static int itemAmount = 2;
+    static int itemAmount = 0;
 
     TextView theDate;
     Button pantryButton, freezerButton, fridgeButton, addFoodButton, calendarButton;
@@ -113,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
+        sortItems();
+
         if (itemAmount != 0) {
             if (active == 1) pantry();
             else if (active == 2) freezer();
@@ -120,9 +122,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void sortItems() {
+        for (int i = 0; i < itemAmount - 1; i++) {
+            if (date[i+1] < date[i]) {
+                String temp = date[i];
+                date[i] = date[i+1];
+                date[i+1] = temp;
+
+                temp = item[i];
+                item[i] = item[i+1];
+                item[i+1] = temp;
+
+                temp = storageType[i];
+                storageType[i] = storageType[i+1];
+                storageType[i+1] = temp;
+            }
+        }
+    }
+
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onPause() {
+        super.onPause();
 
         saveArray(item, "Item", this);
         saveArray(date, "date", this);
