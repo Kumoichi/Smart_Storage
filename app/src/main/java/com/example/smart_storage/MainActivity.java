@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
     static String[] storageType = {"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
     static int itemAmount = 0;
 
-    TextView theDate;
-    Button pantryButton, freezerButton, fridgeButton, addFoodButton, calendarButton;
+
+    Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     RecyclerView recyclerView;
     View constraintLayout;
     CardView cardView;
+
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
 
     public static void setItem(Editable addItem) {
@@ -62,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
             storageType[i] = "";
         }*/
 
-        theDate = findViewById(R.id.date);
-        calendarButton = findViewById(R.id.calendar_button);
 
         //Intent incomingIntent = getIntent();
         //String date = incomingIntent.getStringExtra("date");
