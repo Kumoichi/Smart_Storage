@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button pantryButton, freezerButton, fridgeButton;
+    RecyclerView recyclerView;
     View constraintLayout;
+    String item, date; //arrays for user inputted items/dates;
     int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
 
