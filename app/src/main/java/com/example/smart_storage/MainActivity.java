@@ -17,14 +17,15 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
 
     static int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
-    static String[] item = {"test1,", "test2,", "test3,", "test4,", "test5"};
-    static String[] date = {"test1,", "test2,", "test3,", "test4,", "test5"};
-    static String[] storageType = {"1", "3", "2", "2", "1"}; //arrays for user inputted items/dates;
+    static String[] item = new String[10];
+    static String[] date = new String[10];
+    static String[] storageType = new String[10]; //arrays for user inputted items/dates;
     static int itemAmount = 0;
     Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     RecyclerView recyclerView;
     View constraintLayout;
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
+
 
     public static void setItem(Editable addItem) {
         item[itemAmount] = String.valueOf(addItem);
@@ -50,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         addFoodButton = findViewById(R.id.add_item_button);
 
         recyclerView = findViewById(R.id.myRecyclerView);
+        for (int i=0; i<10;i++){
+            item[i]= "";
+            date[i] = "";
+            storageType[i] = "";
+        }
+
         updateRecycler();
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
                 openAddFoodActivity();
             }
         });
+        loadArray( "Item",this);
+        loadArray( "date", this);
+        loadArray("storageType",this);
     }
 
     @Override
@@ -89,6 +99,15 @@ public class MainActivity extends AppCompatActivity {
             else if (active == 2) freezer();
             else if (active == 3) fridge();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        saveArray(item, "Item",this);
+        saveArray(date, "date", this);
+        saveArray(storageType, "storeType", this);
     }
 
     public void pantry() {
