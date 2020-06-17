@@ -50,11 +50,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailEdit"
+        app:layout_constraintTop_toBottomOf="@+id/detailDelete"
         app:layout_constraintVertical_bias="0.275" />
 
     <Button
-        android:id="@+id/detailEdit"
+        android:id="@+id/detailDelete"
         android:layout_width="175dp"
         android:layout_height="54dp"
         android:backgroundTint="#ff3b0a"
