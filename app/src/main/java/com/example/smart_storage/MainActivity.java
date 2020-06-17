@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     static String[] item = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     static String[] date = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     static String[] storageType = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    static long[] miliseconds = new long[item.length];
 
     static int itemAmount = 0;
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-/*    private void sortItems() {
+    private void sortItems() {
         for (int i = 0; i < itemAmount - 1; i++) {
             if (date[i+1] < date[i]) {
                 String temp = date[i];
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 storageType[i+1] = temp;
             }
        }
-    }*/
+    }
 
     @Override
     protected void onPause() {
