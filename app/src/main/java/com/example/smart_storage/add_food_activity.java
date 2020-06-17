@@ -1,6 +1,7 @@
 package com.example.smart_storage;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ public class add_food_activity extends AppCompatActivity {
     TextView theDate;
     int storageType = 0;
     View constraintLayout2;
+    SharedPreferences storage;
+    private static final String STORAGE_NAME = "pref_file";
 
 
     @Override
@@ -45,6 +48,10 @@ public class add_food_activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(add_food_activity.this, CalendarActivity.class);
                 startActivity(intent);
+                storage = getSharedPreferences(STORAGE_NAME, 0);
+                SharedPreferences.Editor editor = storage.edit();
+                editor.putString("name", itemName.getText().toString());
+                editor.commit();
             }
         });
 
@@ -112,6 +119,10 @@ public class add_food_activity extends AppCompatActivity {
                 }
             }
         });
+        SharedPreferences pref = getSharedPreferences(STORAGE_NAME, 0);
+        if (pref.contains("name")){
+            itemName.setText(pref.getString("name", String.valueOf(itemName)));
+        }
     }
 
     private void openMainActivity() {
