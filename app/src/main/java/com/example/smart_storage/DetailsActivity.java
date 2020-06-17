@@ -38,6 +38,7 @@ public class DetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int index = findIndex(str1);
                 deleteItem(index);
+                returnToMain();
             }
         });
         getData();
@@ -67,7 +68,7 @@ public class DetailsActivity extends AppCompatActivity {
             MainActivity.item = anotherArray;
 
             String[] anotherArray2 = new String[MainActivity.date.length];
-            for (int i = 0, k = 0; i < MainActivity.item.length; i++) {
+            for (int i = 0, k = 0; i < MainActivity.date.length; i++) {
                 if (i == index) continue;
 
                 anotherArray2[k++] = MainActivity.date[i];
