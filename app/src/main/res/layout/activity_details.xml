@@ -10,8 +10,8 @@
 
     <TextView
         android:id="@+id/detailTitle"
-        android:layout_width="212dp"
-        android:layout_height="40dp"
+        android:layout_width="214dp"
+        android:layout_height="51dp"
         android:fontFamily="casual"
         android:gravity="center"
         android:text="@string/add_food_item"
@@ -78,7 +78,7 @@
         android:id="@+id/detailStorage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:text="@string/textview"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

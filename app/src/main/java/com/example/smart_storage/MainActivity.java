@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 
@@ -112,21 +111,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void sortItems() {
-        for (int i = 0; i < itemAmount - 1; i++) {
-            if (date[i+1] < date[i]) {
-                String temp = date[i];
-                date[i] = date[i+1];
-                date[i+1] = temp;
-                temp = item[i];
-                item[i] = item[i+1];
-                item[i+1] = temp;
-                temp = storageType[i];
-                storageType[i] = storageType[i+1];
-                storageType[i+1] = temp;
-            }
-       }
-    }
+//    private void sortItems() {
+//        for (int i = 0; i < itemAmount - 1; i++) {
+//            if (date[i + 1] < date[i]) {
+//                String temp = date[i];
+//                date[i] = date[i + 1];
+//                date[i + 1] = temp;
+//                temp = item[i];
+//                item[i] = item[i + 1];
+//                item[i + 1] = temp;
+//                temp = storageType[i];
+//                storageType[i] = storageType[i + 1];
+//                storageType[i + 1] = temp;
+//            }
+//        }
+//    }
 
     @Override
     protected void onPause() {
