@@ -65,14 +65,6 @@ public class MainActivity extends AppCompatActivity {
         addFoodButton = findViewById(R.id.add_item_button);
         recyclerView = findViewById(R.id.myRecyclerView);
 
-
-        //Intent incomingIntent = getIntent();
-        //String date = incomingIntent.getStringExtra("date");
-        //theDate.setText(date);
-
-//        item = loadArray("Item", this);
-//        date = loadArray("date", this);
-//        storageType = loadArray("storageType", this);
         updateRecycler();
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
@@ -102,14 +94,6 @@ public class MainActivity extends AppCompatActivity {
                 openAddFoodActivity();
             }
         });
-
-        /*calendarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
     @Override

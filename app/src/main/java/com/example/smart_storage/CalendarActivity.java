@@ -2,7 +2,6 @@ package com.example.smart_storage;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.CalendarView;
 
 import androidx.annotation.NonNull;
@@ -23,7 +22,6 @@ public class CalendarActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String dates = year + "/" + month + "/" + dayOfMonth;
-
 
                 Intent intent = new Intent(CalendarActivity.this, add_food_activity.class);
                 intent.putExtra("date", dates);

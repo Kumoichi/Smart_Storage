@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +35,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+        //Filter for pantry/freezer/fridge
+        // 0 = allFoods, 1 = pantry, 2 = freezer, 3 = fridge
         if (MainActivity.active == 0) {
             holder.title.setText(title[position]);
             holder.expiry.setText(expiration[position]);
@@ -43,19 +44,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             if (storageType[position].equals("1")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            } else { holder.rootView.setLayoutParams(holder.params); }
+            } else {
+                holder.rootView.setLayoutParams(holder.params);
+            }
         } else if (MainActivity.active == 2) {
             if (storageType[position].equals("2")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            } else { holder.rootView.setLayoutParams(holder.params); }
+            } else {
+                holder.rootView.setLayoutParams(holder.params);
+            }
         } else if (MainActivity.active == 3) {
             if (storageType[position].equals("3")) {
                 holder.title.setText(title[position]);
                 holder.expiry.setText(expiration[position]);
-            } else { holder.rootView.setLayoutParams(holder.params); }
+            } else {
+                holder.rootView.setLayoutParams(holder.params);
+            }
         }
 
+        //opens DetailsActivity
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +81,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return title.length;
     }
 
+    //connects to my_row.xml
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout.LayoutParams params;
         TextView title, expiry;
