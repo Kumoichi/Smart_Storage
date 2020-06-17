@@ -14,6 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     static int active = 0; //0 = All - 1 = Pantry - 2 = Freezer - 3 = Fridge
@@ -35,6 +39,16 @@ public class MainActivity extends AppCompatActivity {
 
     public static void setDate(String addDate) {
         date[itemAmount] = addDate;
+        try {
+            String dateString = addDate;
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            Date date = sdf.parse(dateString);
+
+            miliseconds[itemAmount] = date.getTime();
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void setStorageType(String addStorageType) {
