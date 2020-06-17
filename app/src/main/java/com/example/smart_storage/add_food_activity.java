@@ -120,9 +120,8 @@ public class add_food_activity extends AppCompatActivity {
             }
         });
         SharedPreferences pref = getSharedPreferences(STORAGE_NAME, 0);
-        if (pref.contains("name")){
             itemName.setText(pref.getString("name", String.valueOf(itemName)));
-        }
+
     }
 
     private void openMainActivity() {
