@@ -6,12 +6,17 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +39,16 @@ public class MainActivity extends AppCompatActivity {
 
     public static void setDate(String addDate) {
         date[itemAmount] = addDate;
+        try {
+            String dateString = addDate;
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            Date date = sdf.parse(dateString);
+
+            miliseconds[itemAmount] = date.getTime();
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void setStorageType(String addStorageType) {
@@ -102,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        //sortItems();
+        sortItems();
 
         if (itemAmount != 0) {
             if (active == 1) pantry();
@@ -111,21 +126,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    private void sortItems() {
-//        for (int i = 0; i < itemAmount - 1; i++) {
-//            if (date[i + 1] < date[i]) {
-//                String temp = date[i];
-//                date[i] = date[i + 1];
-//                date[i + 1] = temp;
-//                temp = item[i];
-//                item[i] = item[i + 1];
-//                item[i + 1] = temp;
-//                temp = storageType[i];
-//                storageType[i] = storageType[i + 1];
-//                storageType[i + 1] = temp;
-//            }
-//        }
-//    }
+    private void sortItems() {
+        for (int i = 0; i < itemAmount - 1; i++) {
+            if (miliseconds[i+1] < miliseconds[i]) {
+                String temp = date[i];
+                date[i] = date[i+1];
+                date[i+1] = temp;
+                temp = item[i];
+                item[i] = item[i+1];
+                item[i+1] = temp;
+                temp = storageType[i];
+                storageType[i] = storageType[i+1];
+                storageType[i+1] = temp;
+            }
+       }
+    }
 
     @Override
     protected void onPause() {
