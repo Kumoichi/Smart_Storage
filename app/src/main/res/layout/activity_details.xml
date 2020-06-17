@@ -5,49 +5,67 @@
     android:id="@+id/activity_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffb675"
     tools:context=".DetailsActivity">
 
     <TextView
         android:id="@+id/detailTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/detailguideline" />
+        android:layout_width="212dp"
+        android:layout_height="40dp"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="@string/add_food_item"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.052" />
 
     <TextView
         android:id="@+id/detailExpiry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="TextView"
+        android:text="@string/textview2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/detailStorage"
+        app:layout_constraintVertical_bias="0.022" />
 
     <Button
-        android:id="@+id/detailDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="Button"
+        android:id="@+id/detailReturn"
+        android:layout_width="176dp"
+        android:layout_height="54dp"
+        android:backgroundTint="@color/addItemsButton"
+        android:text="Return"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/detailEdit"
-        app:layout_constraintTop_toBottomOf="@+id/detailExpiry" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailEdit"
+        app:layout_constraintVertical_bias="0.275" />
 
     <Button
         android:id="@+id/detailEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="Button"
-        app:layout_constraintEnd_toStartOf="@+id/detailDelete"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="175dp"
+        android:layout_height="54dp"
+        android:backgroundTint="#ff3b0a"
+        android:text="@string/remove_item"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailExpiry" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.706" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/detailguideline"
@@ -60,8 +78,12 @@
         android:id="@+id/detailStorage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/detailExpiry"
+        android:layout_marginTop="15dp"
+        android:text="@string/textview"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailTitle"
-        tools:layout_editor_absoluteX="175dp" />
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

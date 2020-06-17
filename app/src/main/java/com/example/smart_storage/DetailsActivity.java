@@ -1,11 +1,10 @@
 package com.example.smart_storage;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -27,18 +26,19 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void getData() {
         if (getIntent().hasExtra("detailTitle") && getIntent().hasExtra("detailExpiry") && getIntent().hasExtra("detailStorage")) {
-            str1 =getIntent().getStringExtra("detailTitle");
-            str2 = getIntent().getStringExtra("detailExpiry");
-            str3 = getIntent().getStringExtra("detailStorage");
-        }
-
-        else
+            str1 = getIntent().getStringExtra("detailTitle");
+            str2 = getIntent().getStringExtra("detailStorage");
+            str3 = getIntent().getStringExtra("detailExpiry");
+        } else
             Toast.makeText(this, "no data", Toast.LENGTH_SHORT).show();
     }
 
     private void setData() {
         detailTitle.setText(str1);
-        detailExpiry.setText(str2);
-        detailStorage.setText(str3);
+        if (str2.equals("1")) detailStorage.setText("Pantry Item");
+        if (str2.equals("2")) detailStorage.setText("Freezer Item");
+        if (str2.equals("3")) detailStorage.setText("Fridge Item");
+
+        detailExpiry.setText(String.format("Expires: %s", str3));
     }
 }
