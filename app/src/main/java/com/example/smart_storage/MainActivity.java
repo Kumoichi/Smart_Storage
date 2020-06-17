@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        //sortItems();
+        sortItems();
 
         if (itemAmount != 0) {
             if (active == 1) pantry();
