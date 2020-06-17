@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void sortItems() {
+   /* private void sortItems() {
         for (int i = 0; i < itemAmount - 1; i++) {
             if (date[i+1] < date[i]) {
                 String temp = date[i];
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 storageType[i+1] = temp;
             }
        }
-    }
+    }*/
 
     @Override
     protected void onPause() {
