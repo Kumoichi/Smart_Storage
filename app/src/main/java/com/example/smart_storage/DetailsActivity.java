@@ -45,6 +45,7 @@ public class DetailsActivity extends AppCompatActivity {
         setData();
     }
 
+    //find index
     private int findIndex(String itemName) {
         int index = -1;
         for (int i = 0; i < MainActivity.item.length; i++) {
@@ -56,8 +57,8 @@ public class DetailsActivity extends AppCompatActivity {
         return index;
     }
 
+    //delete item at index spot and shift over arrays
     private void deleteItem(int index) {
-
         if (index >= 0) {
             String[] anotherArray = new String[MainActivity.item.length];
             for (int i = 0, k = 0; i < MainActivity.item.length; i++) {
@@ -91,6 +92,7 @@ public class DetailsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //receive data
     private void getData() {
         if (getIntent().hasExtra("detailTitle") && getIntent().hasExtra("detailExpiry") && getIntent().hasExtra("detailStorage")) {
             str1 = getIntent().getStringExtra("detailTitle");
@@ -100,6 +102,7 @@ public class DetailsActivity extends AppCompatActivity {
             Toast.makeText(this, "no data", Toast.LENGTH_SHORT).show();
     }
 
+    //set textviews
     private void setData() {
         detailTitle.setText(str1);
         if (str2.equals("1")) detailStorage.setText("Pantry Item");

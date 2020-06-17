@@ -15,14 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class add_food_activity extends AppCompatActivity {
 
+    private static final String STORAGE_NAME = "pref_file";
     Button pantryButton2, freezerButton2, fridgeButton2, doneButton, calendarButton;
     EditText itemName;
     TextView theDate;
     int storageType = 0;
     View constraintLayout2;
     SharedPreferences storage;
-    private static final String STORAGE_NAME = "pref_file";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +36,12 @@ public class add_food_activity extends AppCompatActivity {
         theDate = findViewById(R.id.date);
         calendarButton = findViewById(R.id.calendar_button);
 
-
+        //set up calendar
         Intent incomingIntent = getIntent();
         String date = incomingIntent.getStringExtra("date");
         theDate.setText(date);
 
-
+        //save item name when going into calendar activity
         calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +54,7 @@ public class add_food_activity extends AppCompatActivity {
             }
         });
 
+        //choose storage type
         pantryButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,40 +88,24 @@ public class add_food_activity extends AppCompatActivity {
             }
         });
 
+        //click when all data is entered
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String itemText = itemName.getText().toString().trim();
                 String date = theDate.getText().toString().trim();
-                if (!itemText.isEmpty() && !date.isEmpty() && storageType != 0) {
+                if (!itemText.isEmpty() && !date.isEmpty() && storageType != 0) { //if all data is entered, then sent it
                     MainActivity.setItem(itemText);
                     MainActivity.setDate(String.valueOf(theDate.getText()));
                     MainActivity.setStorageType(String.valueOf(storageType));
                     openMainActivity();
-                }
-//                else if (itemName.getHint().toString().equals("Enter Item") && !date.getHint().toString().equals("Date") && storageType != 0) {
-//                    Toast.makeText(getApplicationContext(), "Please add a name for the item", Toast.LENGTH_LONG).show();
-//                } else if (itemName.getHint().toString().equals("Enter Item") && date.getHint().toString().equals("Date") && storageType != 0) {
-//                    Toast.makeText(getApplicationContext(), "Please add a name and date for the item", Toast.LENGTH_LONG).show();
-//                } else if (itemName.getHint().toString().equals("Enter Item") && date.getHint().toString().equals("Date") && storageType == 0) {
-//                    Toast.makeText(getApplicationContext(), "Please add a name, date and storage type for the item", Toast.LENGTH_LONG).show();
-//                } else if (!itemName.getHint().toString().equals("Enter Item") && !date.getHint().toString().equals("Date") && storageType == 0) {
-//                    Toast.makeText(getApplicationContext(), "Please add a storage type for the item", Toast.LENGTH_LONG).show();
-//                } else if (!itemName.getHint().toString().equals("Enter Item") && date.getHint().toString().equals("Date") && storageType == 0) {
-//                    Toast.makeText(getApplicationContext(), "Please add a date and storage type for the item", Toast.LENGTH_LONG).show();
-//                } else if (!itemName.getHint().toString().equals("Enter Item") && date.getHint().toString().equals("Date") && storageType != 0) {
-//                    Toast.makeText(getApplicationContext(), "Please add a date for the item", Toast.LENGTH_LONG).show();
-//                } else if (itemName.getHint().toString().equals("Enter Item") && !date.getHint().toString().equals("Date") && storageType == 0) {
-//                    Toast.makeText(getApplicationContext(), "Please add a name and storage type for the item", Toast.LENGTH_LONG).show();
-//                }
-                else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Please enter the missing data", Toast.LENGTH_LONG).show();
                 }
             }
         });
         SharedPreferences pref = getSharedPreferences(STORAGE_NAME, 0);
-            itemName.setText(pref.getString("name", String.valueOf(itemName)));
-
+        itemName.setText(pref.getString("name", String.valueOf(itemName)));
     }
 
     private void openMainActivity() {

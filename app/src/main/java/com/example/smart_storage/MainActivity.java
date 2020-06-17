@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 
@@ -45,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
             Date date = sdf.parse(dateString);
 
             miliseconds[itemAmount] = date.getTime();
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
@@ -67,14 +65,6 @@ public class MainActivity extends AppCompatActivity {
         addFoodButton = findViewById(R.id.add_item_button);
         recyclerView = findViewById(R.id.myRecyclerView);
 
-
-        //Intent incomingIntent = getIntent();
-        //String date = incomingIntent.getStringExtra("date");
-        //theDate.setText(date);
-
-//        item = loadArray("Item", this);
-//        date = loadArray("date", this);
-//        storageType = loadArray("storageType", this);
         updateRecycler();
 
         pantryButton.setOnClickListener(new View.OnClickListener() {
@@ -104,14 +94,6 @@ public class MainActivity extends AppCompatActivity {
                 openAddFoodActivity();
             }
         });
-
-        /*calendarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
     @Override
@@ -128,18 +110,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void sortItems() {
         for (int i = 0; i < itemAmount - 1; i++) {
-            if (miliseconds[i+1] < miliseconds[i]) {
+            if (miliseconds[i + 1] < miliseconds[i]) {
                 String temp = date[i];
-                date[i] = date[i+1];
-                date[i+1] = temp;
+                date[i] = date[i + 1];
+                date[i + 1] = temp;
                 temp = item[i];
-                item[i] = item[i+1];
-                item[i+1] = temp;
+                item[i] = item[i + 1];
+                item[i + 1] = temp;
                 temp = storageType[i];
-                storageType[i] = storageType[i+1];
-                storageType[i+1] = temp;
+                storageType[i] = storageType[i + 1];
+                storageType[i + 1] = temp;
             }
-       }
+        }
     }
 
     @Override
