@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,15 +24,15 @@ public class MainActivity extends AppCompatActivity {
     static String[] item = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     static String[] date = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
     static String[] storageType = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
-    static long[] miliseconds = new long[item.length];
+    static long[] miliseconds = new long[item.length]; //used to make the sort method work
 
-    static int itemAmount = 0;
+    static int itemAmount = 0;//keeps count of how many items we have
     int toggle = 1; //has the same button been pressed three times in a row? if so, toggle background colour to that button's colour
     Button pantryButton, freezerButton, fridgeButton, addFoodButton;
     RecyclerView recyclerView;
     View constraintLayout;
 
-    public static void setItem(String addItem) {
+    public static void setItem(String addItem) {//used to set the items to the array
         item[itemAmount] = addItem;
     }
 
@@ -45,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
             Date date = sdf.parse(dateString);
 
             miliseconds[itemAmount] = date.getTime();
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
@@ -80,21 +78,21 @@ public class MainActivity extends AppCompatActivity {
         pantryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pantry();
+                pantry();//display the items in the pantry
             }
         });
 
         freezerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                freezer();
+                freezer();//displays the items in the freezer
             }
         });
 
         fridgeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fridge();
+                fridge();//displays the items in the fridge
             }
         });
 
@@ -128,18 +126,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void sortItems() {
         for (int i = 0; i < itemAmount - 1; i++) {
-            if (miliseconds[i+1] < miliseconds[i]) {
+            if (miliseconds[i + 1] < miliseconds[i]) {
                 String temp = date[i];
-                date[i] = date[i+1];
-                date[i+1] = temp;
+                date[i] = date[i + 1];
+                date[i + 1] = temp;
                 temp = item[i];
-                item[i] = item[i+1];
-                item[i+1] = temp;
+                item[i] = item[i + 1];
+                item[i + 1] = temp;
                 temp = storageType[i];
-                storageType[i] = storageType[i+1];
-                storageType[i+1] = temp;
+                storageType[i] = storageType[i + 1];
+                storageType[i + 1] = temp;
             }
-       }
+        }
     }
 
     @Override
@@ -147,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         updateRecycler();
 
-        saveArray(item, "Item", this);
+        saveArray(item, "Item", this);//when the app is set to onpause the arrays are stored in sharedpreferences
         saveArray(date, "date", this);
         saveArray(storageType, "storeType", this);
     }
@@ -206,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void updateRecycler() {
+    private void updateRecycler() {//updates the recycler to show the current
         MyAdapter myAdapter = new MyAdapter(this, item, date, storageType);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -227,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
         return editor.commit();
     }
 
-    public String[] loadArray(String arrayName, Context mContext) {
+    public String[] loadArray(String arrayName, Context mContext) {//creates a new array that grabs the items that were stored before;
         SharedPreferences prefs = mContext.getSharedPreferences("prefrencename", 0);
         int size = prefs.getInt(arrayName + "_size", 0);
         String[] array = new String[size];
