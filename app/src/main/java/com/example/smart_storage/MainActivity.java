@@ -126,9 +126,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-   /* private void sortItems() {
+    private void sortItems() {
         for (int i = 0; i < itemAmount - 1; i++) {
-            if (date[i+1] < date[i]) {
+            if (miliseconds[i+1] < miliseconds[i]) {
                 String temp = date[i];
                 date[i] = date[i+1];
                 date[i+1] = temp;
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 storageType[i+1] = temp;
             }
        }
-    }*/
+    }
 
     @Override
     protected void onPause() {
