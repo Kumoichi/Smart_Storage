@@ -33,8 +33,56 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int index = findIndex(str1);
+                deleteItem(index);
+            }
+        });
         getData();
         setData();
+    }
+
+    private int findIndex(String itemName) {
+        int index = -1;
+        for (int i = 0; i < MainActivity.item.length; i++) {
+            if (MainActivity.item[i].equals(itemName)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    private void deleteItem(int index) {
+
+        if (index >= 0) {
+            String[] anotherArray = new String[MainActivity.item.length];
+            for (int i = 0, k = 0; i < MainActivity.item.length; i++) {
+                if (i == index) continue;
+
+                anotherArray[k++] = MainActivity.item[i];
+            }
+            MainActivity.item = anotherArray;
+
+            String[] anotherArray2 = new String[MainActivity.date.length];
+            for (int i = 0, k = 0; i < MainActivity.item.length; i++) {
+                if (i == index) continue;
+
+                anotherArray2[k++] = MainActivity.date[i];
+            }
+            MainActivity.date = anotherArray2;
+
+            String[] anotherArray3 = new String[MainActivity.storageType.length];
+            for (int i = 0, k = 0; i < MainActivity.storageType.length; i++) {
+                if (i == index) continue;
+
+                anotherArray3[k++] = MainActivity.storageType[i];
+            }
+            MainActivity.storageType = anotherArray3;
+            MainActivity.itemAmount--;
+        }
     }
 
     private void returnToMain() {

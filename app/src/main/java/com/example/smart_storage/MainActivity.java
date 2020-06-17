@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        updateRecycler();
 
         saveArray(item, "Item", this);
         saveArray(date, "date", this);
